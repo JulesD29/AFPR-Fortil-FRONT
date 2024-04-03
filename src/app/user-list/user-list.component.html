@@ -1,0 +1,108 @@
+<div class="user-list">
+  <h2>Liste des utilisateurs</h2>
+  
+  <ul>
+    <li *ngFor="let user of users" class="user-item">
+      <div class="user-details">
+        <div class="user-name">{{ user.firstName }} {{ user.lastName | uppercase }} (id: {{user.user_index}})</div>
+        <div *ngIf="user.role === 'ROLE_ADMIN'" class="user-role">Administrateur</div>
+        <div class="user-email">{{ user.mail }}</div>
+      </div>
+    </li>
+  </ul>
+</div>
+  
+
+<div class="container-buttons">
+  <div class="button-container">
+    <button (click)="showCreateForm()">Ajouter un utilisateur</button>
+  </div>
+  <div class="button-container">
+    <button (click)="showUpdateForm()">Modifier un utilisateur</button>
+  </div>
+  <div class="button-container">
+    <button (click)="showDeleteForm()">Supprimer un utilisateur</button>
+  </div>
+</div>
+
+
+<div class="user-form" *ngIf="showCreate">
+  <h2>Ajoutez un utilisateur</h2>
+
+<form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="firstName">Prénom :</label>
+    <input type="text" id="firstName-create" name="firstName" [(ngModel)]="newUser.firstName" required>
+  </div>
+  <div>
+    <label for="lastName">Nom :</label>
+    <input type="text" id="lastName-create" name="lastName" [(ngModel)]="newUser.lastName" required>
+  </div>
+  <div>
+    <label for="mail">Email :</label>
+    <input type="email" id="mail-create" name="mail" [(ngModel)]="newUser.mail" required>
+  </div>
+  <div>
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password-create" name="password" [(ngModel)]="newUser.password" required>
+  </div>
+  <div class="roles">
+    <label for="roleSelect">Role :</label>
+    <select id="roleSelect-create" name="role" [(ngModel)]="newUser.role">
+      <option value="ROLE_USER">Utilisateur</option>
+      <option value="ROLE_ADMIN">Administrateur</option>
+    </select>
+  </div>
+  <button type="submit">Ajouter</button>
+</form>
+</div>
+
+
+<div class="user-form" *ngIf="showUpdate">
+<h2>Modifier un utilisateur</h2>
+
+<form #userForm="ngForm" (ngSubmit)="onUpdate()">
+  <div>
+    <label for="userId">Saisissez l'ID de l'utilisateur à modifier :</label>
+    <input type="text" id="userId-update" name="userId" [(ngModel)]="selectedUserId" (ngModelChange)="getUserById()" required>
+  <p *ngIf="searchError" class="error-message">{{ searchError }}</p> <!-- Message d'erreur -->
+  </div>
+  <div>
+    <label for="firstName">Prénom :</label>
+    <input type="text" id="firstName-update" name="firstName" [(ngModel)]="selectedUser.firstName">
+  </div>
+  <div>
+    <label for="lastName">Nom :</label>
+    <input type="text" id="lastName-update" name="lastName" [(ngModel)]="selectedUser.lastName">
+  </div>
+  <div>
+    <label for="mail">Email :</label>
+    <input type="email" id="mail-update" name="mail" [(ngModel)]="selectedUser.mail">
+  </div>
+  <div>
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password-update" name="password" [(ngModel)]="selectedUser.password">
+  </div>
+  <div class="roles">
+    <label for="role">Role :</label>
+    <select id="role-update" name="role" [(ngModel)]="selectedUser.role">
+      <option value="ROLE_USER">Utilisateur</option>
+      <option value="ROLE_ADMIN">Administrateur</option>
+    </select>
+  </div>
+  <button type="submit">Modifier</button>
+</form>
+</div>
+
+<div class="user-form" *ngIf="showDelete">
+<h2>Supprimer un utilisateur</h2>
+<form (ngSubmit)="onDelete()">
+  <div class="chooseUserToDelete">
+    <label for="userIdToDelete">Sélectionnez l'utilisateur à supprimer :</label>
+    <select [(ngModel)]="userIdToDelete" name="userIdToDelete">
+      <option *ngFor="let user of users" [value]="user.user_index">{{ user.firstName }} {{ user.lastName }}</option>
+    </select>
+  </div>
+  <div>{{ deleteMessage }}</div>
+  <button type="submit">Supprimer</button>
+</form>

@@ -1,0 +1,26 @@
+<h2> Ici vous trouverez tous les tags</h2>
+
+<mat-form-field class="example-chip-list">
+    <mat-label>All Tags</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Enter tags">
+      @for (tag of tags; track tag) {
+        <mat-chip-row
+          (removed)="remove(tag)"
+          [editable]="true"
+          (edited)="edit(tag, $event)"
+          [aria-description]="'press enter to edit ' + tag.value">
+          {{tag.value}}
+          <button matChipRemove [attr.aria-label]="'remove ' + tag.value">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      }
+      <input placeholder="New tag..."
+             [matChipInputFor]="chipGrid"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)"/>
+    </mat-chip-grid>
+  </mat-form-field>
+  
+

@@ -1,0 +1,171 @@
+.message-list {
+  font-family: Arial, sans-serif;
+}
+
+.message-list h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.message-item {
+  position: relative;
+  list-style: none;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.message-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-author {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.message-content {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.message-dates {
+  display: flex;
+}
+
+.message-creation-date {
+  color: #666;
+}
+
+.message-modification-date {
+  color: #900;
+  margin-left: 10px;
+}
+
+.message-creation-date,
+.message-modification-date {
+  font-size: 12px;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.user-selection,
+.message-input {
+  margin-bottom: 10px;
+}
+
+.send-button {
+  align-self: flex-end;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%; /* Utilisation de 100% de la largeur */
+  padding: 10px; /* Réduction du padding */
+  margin-bottom: 10px; /* Espacement entre les éléments */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  resize: vertical;
+}
+
+.send-button {
+  width: 100%; /* Utilisation de 100% de la largeur */
+  padding: 10px; /* Réduction du padding */
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transition en douceur */
+}
+
+.send-button:hover {
+  background-color: #45a049;
+}
+
+select {
+  width: 100%; /* Utilisation de 100% de la largeur */
+  padding: 8px;
+  margin-bottom: 10px; /* Espacement entre les éléments */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+select:hover {
+  border-color: #aaa;
+}
+
+select:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+select option:hover {
+  background-color: #f9f9f9;
+}
+
+select option:checked {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.more-options-button {
+  position: absolute; /* Position absolue */
+  top: 5px; /* Marge de 5px en haut */
+  right: 5px; /* Marge de 5px à droite */
+  background-color: transparent; /* Fond transparent */
+  color: #333; /* Couleur du texte */
+  border: none; /* Supprimer la bordure */
+  cursor: pointer; /* Curseur pointer au survol */
+  font-size: 20px; /* Taille de la police */
+  transition: color 0.3s ease; /* Transition en douceur pour la couleur du texte */
+}
+
+.more-options-button:hover {
+  color: #666; /* Couleur du texte au survol */
+}
+
+.message-options {
+  display: flex; /* Utilisation de flexbox */
+  justify-content: flex-end;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #4CAF50; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  border: none; /* Supprimer la bordure */
+  border-radius: 4px; /* Bordure arrondie */
+  padding: 8px 12px; /* Espacement interne */
+  margin-left: 10px; /* Marge à gauche entre les boutons */
+  cursor: pointer; /* Curseur pointer au survol */
+  transition: background-color 0.3s ease; /* Transition en douceur */}
+
+.edit-button:hover,
+.delete-button:hover {
+  color: #666; /* Couleur du texte au survol */
+}

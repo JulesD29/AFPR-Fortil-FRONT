@@ -1,0 +1,46 @@
+<div class="message-list">
+  <h2>Liste des messages</h2>
+
+  <ul>
+    <li *ngFor="let message of messages" class="message-item">
+      <div class="message-details">
+        <div class="message-author">{{ message.user.firstName }} :</div>
+        <div class="message-content" *ngIf="!message.editMode">{{ message.value }}</div>
+        <input type="text" *ngIf="message.editMode" [(ngModel)]="message.value" />
+        <ng-template #editMode>
+          <input type="text" [(ngModel)]="message.updatedValue">
+        </ng-template>
+        <div class="message-dates">
+          <div class="message-creation-date">{{ message.creation_date | date: 'dd/MM/yyyy HH:mm' }}</div>
+          <div class="message-modification-date" *ngIf="message.modification_date">
+            (Modifié le : {{ message.modification_date | date: 'dd/MM/yyyy HH:mm' }})
+          </div>
+          <button class="more-options-button" (click)="toggleButtons(message)">...</button>
+          <div class="message-actions" *ngIf="message.showButtons">
+            <button class="edit-button" (click)="editMessage(message)">Modifier</button>
+            <button class="delete-button" (click)="deleteMessage(message)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="message-form">
+  <h2>Ecrire un message</h2>
+
+  <div class="user-selection">
+    <label for="selectedUser">Sélectionnez l'utilisateur :</label>
+    <select id="selectedUser" name="selectedUser" [(ngModel)]="selectedUserName">
+      <option *ngFor="let user of users" [value]="user.firstName + ' ' + user.lastName">{{ user.firstName }} {{ user.lastName }}</option>
+    </select>
+  </div>
+
+  <div class="message-input">
+    <label for="newMessage">Message :</label>
+    <textarea id="newMessage" name="newMessage" [(ngModel)]="newMessageValue" required></textarea>
+  </div>
+
+    <button class="send-button" type="button" (click)="onSubmit()">Envoyer</button>
+</div>
+  
